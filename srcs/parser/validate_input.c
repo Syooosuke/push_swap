@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   validate_input.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 15:45:28 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 17:48:27 by atajima          ###   ########.fr       */
+/*   Created: 2026/05/23 16:49:15 by atajima           #+#    #+#             */
+/*   Updated: 2026/05/23 17:03:33 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_init(void)
+void	validate_and_push(t_stack *a, char *s)
 {
-	t_stack	*lst;
+	int		value;
+	t_node	*node;
 
-	lst = (t_stack *)malloc(sizeof(t_stack));
-	if (!lst)
-		return (NULL);
-	lst->top = NULL;
-	lst->bottom = NULL;
-	lst->size = 0;
-	return (lst);
+	if (!is_valid_int_str(s) || !is_in_int_range(s))
+	{
+		stack_free(a);
+		error_exit();
+	}
+	value = ft_atoi(s);
+	if (!has_deplicate(a, value))
+	{
+		stack_free(a);
+		error_exit();
+	}
+	node = node_new(value);
+	if (!node)
+	{
+		stack_free(a);
+		error_exit();
+	}
+	stack_push_bottom(a, node);
 }

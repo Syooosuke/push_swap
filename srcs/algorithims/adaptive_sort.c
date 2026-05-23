@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 15:45:28 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 17:48:27 by atajima          ###   ########.fr       */
+/*   Created: 2026/05/23 20:25:24 by atajima           #+#    #+#             */
+/*   Updated: 2026/05/23 20:30:20 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_init(void)
+void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench, double disorder)
 {
-	t_stack	*lst;
-
-	lst = (t_stack *)malloc(sizeof(t_stack));
-	if (!lst)
-		return (NULL);
-	lst->top = NULL;
-	lst->bottom = NULL;
-	lst->size = 0;
-	return (lst);
+	if (disorder < 0.2)
+		sort_simple(a, b, bench);
+	else if (0.2 <= disorder && disorder < 0.5)
+		sort_medium(a, b, bench);
+	else
+		sort_complex(a, b, bench);
 }

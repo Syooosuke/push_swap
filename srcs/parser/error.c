@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 20:36:30 by syokota           #+#    #+#             */
-/*   Updated: 2026/05/23 16:20:08 by atajima          ###   ########.fr       */
+/*   Created: 2026/05/23 16:46:13 by atajima           #+#    #+#             */
+/*   Updated: 2026/05/23 16:48:04 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char **argv)
+#include "push_swap.h"
+
+void	error_exit(void)
 {
-	(void)argc;
-	(void)argv;
-	return (0);
+	write (STDERR_FILENO, "Error\n", 6);
+	exit(1);
 }

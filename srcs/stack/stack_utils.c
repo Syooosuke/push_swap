@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 15:51:20 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 16:17:44 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/23 19:19:14 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	stack_push_bottom(t_stack *lst, t_node *node)
 	{
 		lst->top = node;
 		lst->bottom = node;
-		node->prev =NULL;
+		node->prev = NULL;
 		node->next = NULL;
 	}
 	else
@@ -37,7 +37,7 @@ void	stack_push_top(t_stack *lst, t_node *node)
 	{
 		lst->top = node;
 		lst->bottom = node;
-		node->prev =NULL;
+		node->prev = NULL;
 		node->next = NULL;
 	}
 	else
@@ -48,6 +48,7 @@ void	stack_push_top(t_stack *lst, t_node *node)
 	}
 	lst->size++;
 }
+
 t_node	*stack_pop_top(t_stack *lst)
 {
 	t_node	*node;

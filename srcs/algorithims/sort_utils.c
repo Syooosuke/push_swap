@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 15:45:28 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 17:48:27 by atajima          ###   ########.fr       */
+/*   Created: 2026/05/23 20:13:02 by atajima           #+#    #+#             */
+/*   Updated: 2026/05/23 20:13:41 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_init(void)
+void	assign_ranks(t_stack *a)
 {
-	t_stack	*lst;
+	t_node	*current;
+	t_node	*cmp;
+	int		rank;
 
-	lst = (t_stack *)malloc(sizeof(t_stack));
-	if (!lst)
-		return (NULL);
-	lst->top = NULL;
-	lst->bottom = NULL;
-	lst->size = 0;
-	return (lst);
+	current = a->top;
+	while (current)
+	{
+		rank = 0;
+		cmp = a->top;
+		while (cmp)
+		{
+			if (cmp->value < current->value)
+				rank++;
+			cmp = cmp->next;
+		}
+		current->rank = rank;
+		current = current->next;
+	}
 }

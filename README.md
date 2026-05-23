@@ -1,0 +1,1 @@
+makefileのtestcase commandをけす。
