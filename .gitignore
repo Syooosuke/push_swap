@@ -1,0 +1,11 @@
+*.o
+*.a
+*.so
+*.dylib
+objs/
+obj/
+build/
+push_swap
+checker
+a.out
+*.exe
