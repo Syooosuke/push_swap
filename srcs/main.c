@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syokota <syokota@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 20:36:30 by syokota           #+#    #+#             */
-/*   Updated: 2026/05/22 20:36:33 by syokota          ###   ########.fr       */
+/*   Updated: 2026/05/23 16:20:08 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    (void)argc;
-    (void)argv;
-    return (0);
+	(void)argc;
+	(void)argv;
+	return (0);
 }

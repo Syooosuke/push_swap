@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_new.c                                         :+:      :+:    :+:   */
+/*   stack_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 15:26:47 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 15:45:11 by atajima          ###   ########.fr       */
+/*   Created: 2026/05/23 16:15:32 by atajima           #+#    #+#             */
+/*   Updated: 2026/05/23 16:19:17 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*node_new(int value)
+void	stack_free(t_stack *lst)
 {
-	t_node	*node;
+	t_node	*current;
+	t_node	*next;
 
-	node = malloc(sizeof(t_node));
-	if(!node)
-		return (NULL);
-	node->value = value;
-	node->rank = 0;
-	node->prev = NULL;
-	node->next = NULL;
-	return (node);
+	if (!lst)
+		return ;
+	current = lst->top;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	free(lst);
 }
