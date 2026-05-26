@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 19:01:47 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 19:30:07 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/26 18:35:44 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,21 @@ static void	sort_three(t_stack *a, t_bench *bench)
 	else if (top < mid && top > a->bottom->value)
 		op_rra(a, bench);
 }
+
+// void	sort_simple(t_stack *a, t_stack *b, t_bench *bench)
+// {
+// 	while (a->size > 3)
+// 	{
+// 		bring_min_to_top(a, bench);
+// 		op_pb(a, b, bench);
+// 	}
+// 	if (a->size == 2)
+// 		sort_two(a, bench);
+// 	else if (a->size == 3)
+// 		sort_three(a, bench);
+// 	while (b->size > 0)
+// 		op_pa(a, b, bench);
+// }
 
 void	sort_simple(t_stack *a, t_stack *b, t_bench *bench)
 {

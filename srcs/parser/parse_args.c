@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:58:04 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 20:34:30 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/26 18:28:38 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static void	parse_split_str(t_stack *a, char *arg)
 	else
 		validate_and_push(a, arg);
 }
-
+//splitとnumbersでちょっと役割被ってる部分ある
 void	parse_numbers(int argc, char **argv, t_stack *a)
 {
 	int	i;
@@ -102,6 +102,13 @@ void	parse_numbers(int argc, char **argv, t_stack *a)
 		}
 		i++;
 	}
+}
+
+int	parse_args(int argc, char **argv, t_stack *a, t_bench *bench)
+{
+	parse_flag(argc, argv, &bench->strategy_used, bench);
+	parse_numbers(argc, argv, a);
+	return (0);
 }
 
 // static void free_split(char **split)

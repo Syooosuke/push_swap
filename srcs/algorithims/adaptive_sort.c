@@ -14,10 +14,19 @@
 
 void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench, double disorder)
 {
-	if (disorder < 0.2)
+	if (a->size <= 5 || disorder < 0.2)
+	{
+		bench->strategy_used = START_SIMPLE;
 		sort_simple(a, b, bench);
+	}
 	else if (0.2 <= disorder && disorder < 0.5)
+	{
+		bench->strategy_used = START_MEDIUM;
 		sort_medium(a, b, bench);
+	}
 	else
+	{
+		bench->strategy_used = START_COMPLEX;
 		sort_complex(a, b, bench);
+	}
 }
