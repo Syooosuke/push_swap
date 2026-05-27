@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 17:24:00 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/26 17:24:00 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/27 20:21:10 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	init_bench(t_bench *bench)
 	bench->enabled = 0;
 	bench->disorder = 0.0;
 	bench->strategy_used = START_ADAPTIVE;
+	bench->calc_amount = 0;
 	bench->count_sa = 0;
 	bench->count_sb = 0;
 	bench->count_ss = 0;

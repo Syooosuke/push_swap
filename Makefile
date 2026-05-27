@@ -29,7 +29,8 @@ ADAPTIVE_SRCS = $(SRCS_DIR)/algorithims/adaptive_sort.c
 
 SORT_UTILS_SRCS = $(SRCS_DIR)/algorithims/sort_utils.c
 
-DISORDER_SRCS = $(SRCS_DIR)/disorder/compute_disorder.c
+DISORDER_SRCS = $(SRCS_DIR)/disorder/compute_disorder.c \
+                 $(SRCS_DIR)/disorder/compute_practical_disorder.c
 
 BENCH_SRCS = $(SRCS_DIR)/bench/bench_report.c
 

@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 20:25:24 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/23 20:30:20 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/27 20:14:11 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench, double disorder)
 {
-	if (a->size <= 5 || disorder < 0.2)
+	double	practical_disorder;
+
+	practical_disorder = compute_practical_disorder(a);
+	if (a->size <= 5)
 	{
-		bench->strategy_used = START_SIMPLE;
+
+		bench->calc_amount = START_SIMPLE;
 		sort_simple(a, b, bench);
 	}
-	else if (0.2 <= disorder && disorder < 0.5)
+	else if (a->size <= 100 || practical_disorder < 0.10
+		|| (disorder < 0.20 && practical_disorder < 0.25))
 	{
-		bench->strategy_used = START_MEDIUM;
+		bench->calc_amount = START_MEDIUM;
 		sort_medium(a, b, bench);
 	}
 	else
 	{
-		bench->strategy_used = START_COMPLEX;
+		bench->calc_amount = START_COMPLEX;
 		sort_complex(a, b, bench);
 	}
 }

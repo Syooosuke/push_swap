@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 19:57:33 by syokota           #+#    #+#             */
-/*   Updated: 2026/05/26 16:06:09 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/27 20:09:57 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_bench
 	int				enabled;
 	double			disorder;
 	t_strategy		strategy_used;
+	t_strategy		calc_amount;
 	int				count_sa;
 	int				count_sb;
 	int				count_ss;
@@ -91,6 +92,7 @@ void				sort_complex(t_stack *a, t_stack *b, t_bench *bench);
 void				sort_adaptive(t_stack *a, t_stack *b, t_bench *bench,
 						double disorder);
 double				compute_disorder(t_stack *a);
+double				compute_practical_disorder(t_stack *a);
 void				assign_ranks(t_stack *a);
 void				print_bench(t_bench *bench);
 

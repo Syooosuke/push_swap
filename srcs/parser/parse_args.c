@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:58:04 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/26 18:28:38 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/27 20:44:17 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static int	parse_strat_flag(char *arg, t_strategy *strat)
 
 int	is_flag(char *arg)
 {
+	if (arg[2] >= '0' && arg[2] <= '9')
+		return (0);
 	return (arg[0] == '-' && arg[1] == '-');
 }
 
@@ -85,7 +87,7 @@ static void	parse_split_str(t_stack *a, char *arg)
 	else
 		validate_and_push(a, arg);
 }
-//splitとnumbersでちょっと役割被ってる部分ある
+
 void	parse_numbers(int argc, char **argv, t_stack *a)
 {
 	int	i;
