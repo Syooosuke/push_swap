@@ -6,43 +6,11 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:58:04 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/27 20:44:17 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/28 18:49:12 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	parse_strat_flag(char *arg, t_strategy *strat)
-{
-	if (ft_strncmp(arg, "--simple", 9) == 0)
-	{
-		*strat = START_SIMPLE;
-		return (1);
-	}
-	if (ft_strncmp(arg, "--medium", 9) == 0)
-	{
-		*strat = START_MEDIUM;
-		return (1);
-	}
-	if (ft_strncmp(arg, "--complex", 9) == 0)
-	{
-		*strat = START_COMPLEX;
-		return (1);
-	}
-	if (ft_strncmp(arg, "--adaptive", 9) == 0)
-	{
-		*strat = START_ADAPTIVE;
-		return (1);
-	}
-	return (0);
-}
-
-int	is_flag(char *arg)
-{
-	if (arg[2] >= '0' && arg[2] <= '9')
-		return (0);
-	return (arg[0] == '-' && arg[1] == '-');
-}
 
 void	parse_flag(int argc, char **argv, t_strategy *strat, t_bench *bench)
 {
@@ -54,8 +22,12 @@ void	parse_flag(int argc, char **argv, t_strategy *strat, t_bench *bench)
 	while (i < argc)
 	{
 		if (parse_strat_flag(argv[i], strat) == 0)
-			if (ft_strncmp(argv[i], "--bench", 8) == 0)
+		{
+			if (is_bench_flag(argv[i]))
 				bench->enabled = 1;
+			else if (is_option(argv[i]))
+				error_exit();
+		}
 		i++;
 	}
 }

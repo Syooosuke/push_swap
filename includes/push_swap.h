@@ -60,6 +60,10 @@ typedef struct s_bench
 
 int					parse_args(int argc, char **argv, t_stack *a,
 						t_bench *bench);
+int					parse_strat_flag(char *arg, t_strategy *strat);
+int					is_bench_flag(char *arg);
+int					is_option(char *arg);
+int					is_flag(char *arg);
 void				error_exit(void);
 int					ft_atoi(const char *nptr);
 char				*ft_strchr(const char *s, int c);

@@ -11,6 +11,7 @@ STACK_SRCS  = $(SRCS_DIR)/stack/node_new.c \
               $(SRCS_DIR)/stack/stack_free.c
 
 PARSER_SRCS = $(SRCS_DIR)/parser/parse_args.c \
+              $(SRCS_DIR)/parser/parse_flags.c \
               $(SRCS_DIR)/parser/validate_input.c \
               $(SRCS_DIR)/parser/error.c
 
