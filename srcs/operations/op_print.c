@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   adaptive_sort.c                                    :+:      :+:    :+:   */
+/*   op_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/23 20:25:24 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/29 19:19:15 by atajima          ###   ########.fr       */
+/*   Created: 2026/05/29 19:31:24 by atajima           #+#    #+#             */
+/*   Updated: 2026/05/29 20:03:15 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_adaptive(t_stack *a, t_stack *b, t_bench *bench, double disorder)
+void	op_print(t_bench *bench, char *op)
 {
-	if (a->size <= 5 || disorder < 0.2)
+	char	*tmp;
+
+	if (!bench->BUFFER)
+		return ;
+	tmp = ft_strjoin(bench->BUFFER, op);
+	if (!tmp)
 	{
-		bench->calc_amount = START_SIMPLE;
-		sort_simple(a, b, bench);
+		free(bench->BUFFER);
+		return ;
 	}
-	else if (a->size <= 100 || disorder < 0.5)
-	{
-		bench->calc_amount = START_MEDIUM;
-		sort_medium(a, b, bench);
-	}
-	else
-	{
-		bench->calc_amount = START_COMPLEX;
-		sort_complex(a, b, bench);
-	}
+	free(bench->BUFFER);
+	bench->BUFFER = tmp;
+}
+
+void	op_flush(t_bench *bench)
+{
+	if (bench->BUFFER)
+		write(STDOUT_FILENO, bench->BUFFER, ft_strlen(bench->BUFFER));
 }

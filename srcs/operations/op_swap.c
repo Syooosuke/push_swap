@@ -30,7 +30,7 @@ static void	swap_top(t_stack *lst)
 void	op_sa(t_stack *a, t_bench *bench)
 {
 	swap_top(a);
-	write(STDOUT_FILENO, "sa\n", 3);
+	op_print(bench, "sa\n");
 	if (bench->enabled)
 		bench->count_sa++;
 }
@@ -38,7 +38,7 @@ void	op_sa(t_stack *a, t_bench *bench)
 void	op_sb(t_stack *b, t_bench *bench)
 {
 	swap_top(b);
-	write(STDOUT_FILENO, "sb\n", 3);
+	op_print(bench, "sb\n");
 	if (bench->enabled)
 		bench->count_sb++;
 }
@@ -47,7 +47,7 @@ void	op_ss(t_stack *a, t_stack *b, t_bench *bench)
 {
 	swap_top(a);
 	swap_top(b);
-	write(STDOUT_FILENO, "ss\n", 3);
+	op_print(bench, "ss\n");
 	if (bench->enabled)
 		bench->count_ss++;
 }

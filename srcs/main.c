@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 17:24:00 by atajima           #+#    #+#             */
-/*   Updated: 2026/05/27 20:21:10 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/29 19:57:38 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 static void	init_bench(t_bench *bench)
 {
 	bench->enabled = 0;
+	bench->BUFFER = malloc(sizeof(char));
+	if (!bench->BUFFER)
+		error_exit();
+	bench->BUFFER[0] = '\0';
 	bench->disorder = 0.0;
 	bench->strategy_used = START_ADAPTIVE;
 	bench->calc_amount = 0;
@@ -74,6 +78,7 @@ int	main(int argc, char **argv)
 	{
 		stack_free(a);
 		stack_free(b);
+		free(bench.BUFFER);
 		error_exit();
 	}
 	parse_args(argc, argv, a, &bench);
@@ -82,5 +87,6 @@ int	main(int argc, char **argv)
 	print_bench(&bench);
 	stack_free(a);
 	stack_free(b);
+	free(bench.BUFFER);
 	return (0);
 }

@@ -18,7 +18,8 @@ PARSER_SRCS = $(SRCS_DIR)/parser/parse_args.c \
 OPS_SRCS    = $(SRCS_DIR)/operations/op_swap.c \
               $(SRCS_DIR)/operations/op_push.c \
               $(SRCS_DIR)/operations/op_rotate.c \
-              $(SRCS_DIR)/operations/op_reverse.c
+              $(SRCS_DIR)/operations/op_reverse.c \
+              $(SRCS_DIR)/operations/op_print.c
 
 SIMPLE_SRCS = $(SRCS_DIR)/algorithims/simple_sort.c
 
@@ -30,8 +31,7 @@ ADAPTIVE_SRCS = $(SRCS_DIR)/algorithims/adaptive_sort.c
 
 SORT_UTILS_SRCS = $(SRCS_DIR)/algorithims/sort_utils.c
 
-DISORDER_SRCS = $(SRCS_DIR)/disorder/compute_disorder.c \
-                 $(SRCS_DIR)/disorder/compute_practical_disorder.c
+DISORDER_SRCS = $(SRCS_DIR)/disorder/compute_disorder.c
 
 BENCH_SRCS = $(SRCS_DIR)/bench/bench_report.c
 
@@ -98,17 +98,17 @@ test_adaptive: $(ADAPTIVE_TEST)
 test_adaptive_random: $(ADAPTIVE_TEST)
 	bash tests/random_adaptive_sort.sh
 
-$(STACK_TEST): tests/stack_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS)
-	$(CC) $(CFLAGS) tests/stack_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) -o $(STACK_TEST)
+$(STACK_TEST): tests/stack_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) tests/stack_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) -L$(LIBFT_DIR) -lft -o $(STACK_TEST)
 
-$(MEDIUM_TEST): tests/medium_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(MEDIUM_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS)
-	$(CC) $(CFLAGS) tests/medium_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(MEDIUM_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) -o $(MEDIUM_TEST)
+$(MEDIUM_TEST): tests/medium_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(MEDIUM_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) tests/medium_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(MEDIUM_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) -L$(LIBFT_DIR) -lft -o $(MEDIUM_TEST)
 
-$(COMPLEX_TEST): tests/complex_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(COMPLEX_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS)
-	$(CC) $(CFLAGS) tests/complex_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(COMPLEX_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) -o $(COMPLEX_TEST)
+$(COMPLEX_TEST): tests/complex_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(COMPLEX_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) tests/complex_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(COMPLEX_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) -L$(LIBFT_DIR) -lft -o $(COMPLEX_TEST)
 
-$(ADAPTIVE_TEST): tests/adaptive_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) $(MEDIUM_SRCS) $(COMPLEX_SRCS) $(ADAPTIVE_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS)
-	$(CC) $(CFLAGS) tests/adaptive_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) $(MEDIUM_SRCS) $(COMPLEX_SRCS) $(ADAPTIVE_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) -o $(ADAPTIVE_TEST)
+$(ADAPTIVE_TEST): tests/adaptive_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) $(MEDIUM_SRCS) $(COMPLEX_SRCS) $(ADAPTIVE_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) tests/adaptive_test_main.c $(STACK_SRCS) $(OPS_SRCS) $(SIMPLE_SRCS) $(MEDIUM_SRCS) $(COMPLEX_SRCS) $(ADAPTIVE_SRCS) $(SORT_UTILS_SRCS) $(DISORDER_SRCS) -L$(LIBFT_DIR) -lft -o $(ADAPTIVE_TEST)
 
 clean:
 	rm -rf $(OBJS_DIR)

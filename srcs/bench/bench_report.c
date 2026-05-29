@@ -87,12 +87,19 @@ void	print_bench(t_bench *bench)
 {
 	int	total;
 
-	if (!bench->enabled)
-		return ;
 	total = bench->count_sa + bench->count_sb + bench->count_ss
 		+ bench->count_pa + bench->count_pb + bench->count_ra
 		+ bench->count_rb + bench->count_rr + bench->count_rra
 		+ bench->count_rrb + bench->count_rrr;
+	if (bench->enabled == 2)
+	{
+		ft_putnbr_fd(total, STDERR_FILENO);
+		return ;
+	}
+	op_flush(bench);
+	if (!bench->enabled)
+		return ;
+	
 	put_disorder(bench->disorder);
 	put_strategy(bench);
 	ft_putstr_fd("[bench] total_ops:  ", STDERR_FILENO);

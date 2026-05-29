@@ -20,7 +20,7 @@ void	op_pa(t_stack *a, t_stack *b, t_bench *bench)
 		return ;
 	node = stack_pop_top(b);
 	stack_push_top(a, node);
-	write(STDOUT_FILENO, "pa\n", 3);
+	op_print(bench, "pa\n");
 	if (bench->enabled)
 		bench->count_pa++;
 }
@@ -33,7 +33,7 @@ void	op_pb(t_stack *a, t_stack *b, t_bench *bench)
 		return ;
 	node = stack_pop_top(a);
 	stack_push_top(b, node);
-	write(STDOUT_FILENO, "pb\n", 3);
+	op_print(bench, "pb\n");
 	if (bench->enabled)
 		bench->count_pb++;
 }

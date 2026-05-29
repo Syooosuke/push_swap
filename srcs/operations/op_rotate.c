@@ -25,7 +25,7 @@ static void	rotate(t_stack *lst)
 void	op_ra(t_stack *a, t_bench *bench)
 {
 	rotate(a);
-	write(STDOUT_FILENO, "ra\n", 3);
+	op_print(bench, "ra\n");
 	if (bench->enabled)
 		bench->count_ra++;
 }
@@ -33,7 +33,7 @@ void	op_ra(t_stack *a, t_bench *bench)
 void	op_rb(t_stack *b, t_bench *bench)
 {
 	rotate(b);
-	write(STDOUT_FILENO, "rb\n", 3);
+	op_print(bench, "rb\n");
 	if (bench->enabled)
 		bench->count_rb++;
 }
@@ -42,7 +42,7 @@ void	op_rr(t_stack *a, t_stack *b, t_bench *bench)
 {
 	rotate(a);
 	rotate(b);
-	write(STDOUT_FILENO, "rr\n", 3);
+	op_print(bench, "rr\n");
 	if (bench->enabled)
 		bench->count_rr++;
 }

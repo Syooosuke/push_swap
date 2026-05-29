@@ -29,7 +29,7 @@ static void	reverse_rotate(t_stack *lst)
 void	op_rra(t_stack *a, t_bench *bench)
 {
 	reverse_rotate(a);
-	write(STDOUT_FILENO, "rra\n", 4);
+	op_print(bench, "rra\n");
 	if (bench->enabled)
 		bench->count_rra++;
 }
@@ -37,7 +37,7 @@ void	op_rra(t_stack *a, t_bench *bench)
 void	op_rrb(t_stack *b, t_bench *bench)
 {
 	reverse_rotate(b);
-	write(STDOUT_FILENO, "rrb\n", 4);
+	op_print(bench, "rrb\n");
 	if (bench->enabled)
 		bench->count_rrb++;
 }
@@ -46,7 +46,7 @@ void	op_rrr(t_stack *a, t_stack *b, t_bench *bench)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	write(STDOUT_FILENO, "rrr\n", 4);
+	op_print(bench, "rrr\n");
 	if (bench->enabled)
 		bench->count_rrr++;
 }

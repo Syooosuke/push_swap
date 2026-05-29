@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 19:57:33 by syokota           #+#    #+#             */
-/*   Updated: 2026/05/27 20:09:57 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/29 20:12:27 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_stack
 typedef struct s_bench
 {
 	int				enabled;
+	char			*BUFFER;
 	double			disorder;
 	t_strategy		strategy_used;
 	t_strategy		calc_amount;
@@ -68,7 +69,9 @@ void				error_exit(void);
 int					ft_atoi(const char *nptr);
 char				*ft_strchr(const char *s, int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t				ft_strlen(const char *s);
 char				**ft_split(char const *s, char c);
+char				*ft_strjoin(const char *s1, const char *s2);
 t_node				*node_new(int value);
 t_stack				*stack_init(void);
 void				stack_push_bottom(t_stack *lst, t_node *node);
@@ -90,14 +93,16 @@ void				op_rr(t_stack *a, t_stack *b, t_bench *bench);
 void				op_rra(t_stack *a, t_bench *bench);
 void				op_rrb(t_stack *b, t_bench *bench);
 void				op_rrr(t_stack *a, t_stack *b, t_bench *bench);
+void				op_print(t_bench *bench, char *op);
+void				op_flush(t_bench *bench);
 void				sort_simple(t_stack *a, t_stack *b, t_bench *bench);
 void				sort_medium(t_stack *a, t_stack *b, t_bench *bench);
 void				sort_complex(t_stack *a, t_stack *b, t_bench *bench);
 void				sort_adaptive(t_stack *a, t_stack *b, t_bench *bench,
 						double disorder);
 double				compute_disorder(t_stack *a);
-double				compute_practical_disorder(t_stack *a);
 void				assign_ranks(t_stack *a);
 void				print_bench(t_bench *bench);
+int count_only(char *arg);
 
 #endif
