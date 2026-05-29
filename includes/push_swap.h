@@ -6,7 +6,7 @@
 /*   By: atajima <atajima@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 19:57:33 by syokota           #+#    #+#             */
-/*   Updated: 2026/05/29 20:12:27 by atajima          ###   ########.fr       */
+/*   Updated: 2026/05/29 20:48:11 by atajima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_stack
 typedef struct s_bench
 {
 	int				enabled;
-	char			*BUFFER;
+	char			*buffer;
 	double			disorder;
 	t_strategy		strategy_used;
 	t_strategy		calc_amount;
@@ -103,6 +103,6 @@ void				sort_adaptive(t_stack *a, t_stack *b, t_bench *bench,
 double				compute_disorder(t_stack *a);
 void				assign_ranks(t_stack *a);
 void				print_bench(t_bench *bench);
-int count_only(char *arg);
+int					count_only(char *arg);
 
 #endif

@@ -99,7 +99,6 @@ void	print_bench(t_bench *bench)
 	op_flush(bench);
 	if (!bench->enabled)
 		return ;
-	
 	put_disorder(bench->disorder);
 	put_strategy(bench);
 	ft_putstr_fd("[bench] total_ops:  ", STDERR_FILENO);

@@ -16,20 +16,20 @@ void	op_print(t_bench *bench, char *op)
 {
 	char	*tmp;
 
-	if (!bench->BUFFER)
+	if (!bench->buffer)
 		return ;
-	tmp = ft_strjoin(bench->BUFFER, op);
+	tmp = ft_strjoin(bench->buffer, op);
 	if (!tmp)
 	{
-		free(bench->BUFFER);
+		free(bench->buffer);
 		return ;
 	}
-	free(bench->BUFFER);
-	bench->BUFFER = tmp;
+	free(bench->buffer);
+	bench->buffer = tmp;
 }
 
 void	op_flush(t_bench *bench)
 {
-	if (bench->BUFFER)
-		write(STDOUT_FILENO, bench->BUFFER, ft_strlen(bench->BUFFER));
+	if (bench->buffer)
+		write(STDOUT_FILENO, bench->buffer, ft_strlen(bench->buffer));
 }

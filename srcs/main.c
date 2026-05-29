@@ -15,10 +15,10 @@
 static void	init_bench(t_bench *bench)
 {
 	bench->enabled = 0;
-	bench->BUFFER = malloc(sizeof(char));
-	if (!bench->BUFFER)
+	bench->buffer = malloc(sizeof(char));
+	if (!bench->buffer)
 		error_exit();
-	bench->BUFFER[0] = '\0';
+	bench->buffer[0] = '\0';
 	bench->disorder = 0.0;
 	bench->strategy_used = START_ADAPTIVE;
 	bench->calc_amount = 0;
@@ -78,7 +78,7 @@ int	main(int argc, char **argv)
 	{
 		stack_free(a);
 		stack_free(b);
-		free(bench.BUFFER);
+		free(bench.buffer);
 		error_exit();
 	}
 	parse_args(argc, argv, a, &bench);
@@ -87,6 +87,6 @@ int	main(int argc, char **argv)
 	print_bench(&bench);
 	stack_free(a);
 	stack_free(b);
-	free(bench.BUFFER);
+	free(bench.buffer);
 	return (0);
 }
